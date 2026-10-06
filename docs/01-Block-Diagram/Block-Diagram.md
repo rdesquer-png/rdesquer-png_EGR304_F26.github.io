@@ -6,19 +6,9 @@ tags:
 ---
 
 ## Overview
-This needs to be updated with a brief purpose for having the block diagram.
-Things to mention are:
-* power levels
-* sensor
-* Actuator
-* team connections
-* Power source
-* ...
 
-To get some initial formatting help, one can view ["here"](https://embedded-systems-design.github.io/EGR304DataSheetTemplate/Appendix/basic-markdown-examples/) some basic techniques.
+This block diagram shows the electrical and control layout for my subsystem of the automated garment folding device. The system uses a Microchip PIC18F57Q43 Curiosity Nano to interface with the motion sensor, status LED, motor driver, motor, power system, and team connectors.
 
+## Block Diagram
 
-## Example Block Diagram 
-Showing an example of how to import a screenshot of the block diagram created outside of git and brought into a page.
-
-![Example of Indivial Block diagram ](individual-block-diagram.png)
+![Ruben Esquer Individual Block Diagram](individual-block-diagram.png.drawio.png)
