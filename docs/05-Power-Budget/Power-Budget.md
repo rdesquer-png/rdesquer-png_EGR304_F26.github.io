@@ -1,9 +1,14 @@
+
 ---
 title: Power Budget
 ---
 
+# Power Budget
+
 ## Overview
-Write a overview of what you did and why you did a Power Budget.
+
+The power budget for the automated garment-folding device will be completed during the final design review.
+
 
 > Capture your power budge as a image to display. Take time to get clean breaks and a well organized layout.
 
