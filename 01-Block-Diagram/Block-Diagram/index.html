@@ -26,7 +26,7 @@
 
     
       
-        <title>Individal Block Diagram - EGR 304 Ruben Esquer Data Sheet</title>
+        <title>Block Diagram - EGR 304 Ruben Esquer Data Sheet</title>
       
     
     
@@ -90,7 +90,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#overview" class="md-skip">
+        <a href="#title-individual-block-diagram" class="md-skip">
           Skip to content
         </a>
       
@@ -125,7 +125,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Individal Block Diagram
+              Block Diagram
             
           </span>
         </div>
@@ -471,7 +471,7 @@
           
   
   <span class="md-ellipsis">
-    Individal Block Diagram
+    Block Diagram
   </span>
   
 
@@ -482,7 +482,7 @@
         
   
   <span class="md-ellipsis">
-    Individal Block Diagram
+    Block Diagram
   </span>
   
 
@@ -502,6 +502,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
+  <a href="#title-individual-block-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      title: Individual Block Diagram
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#overview" class="md-nav__link">
     <span class="md-ellipsis">
       Overview
@@ -514,6 +523,42 @@
   <a href="#block-diagram" class="md-nav__link">
     <span class="md-ellipsis">
       Block Diagram
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#design-decisions-and-system-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Design Decisions and System Architecture
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#microcontroller-connections" class="md-nav__link">
+    <span class="md-ellipsis">
+      Microcontroller Connections
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#relationship-to-product-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Relationship to Product Requirements
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Resources
     </span>
   </a>
   
@@ -800,6 +845,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
+  <a href="#title-individual-block-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      title: Individual Block Diagram
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#overview" class="md-nav__link">
     <span class="md-ellipsis">
       Overview
@@ -812,6 +866,42 @@
   <a href="#block-diagram" class="md-nav__link">
     <span class="md-ellipsis">
       Block Diagram
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#design-decisions-and-system-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Design Decisions and System Architecture
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#microcontroller-connections" class="md-nav__link">
+    <span class="md-ellipsis">
+      Microcontroller Connections
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#relationship-to-product-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Relationship to Product Requirements
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Resources
     </span>
   </a>
   
@@ -840,21 +930,77 @@
   
 
 
-  <h1>Individal Block Diagram</h1>
+  <h1>Block Diagram</h1>
 
+<hr>
+<h2 id="title-individual-block-diagram">title: Individual Block Diagram</h2>
 <h2 id="overview">Overview</h2>
-<p>This block diagram shows the electrical and control layout for my subsystem of the automated garment folding device. The system uses a Microchip PIC18F57Q43 Curiosity Nano to interface with the motion sensor, status LED, motor driver, motor, power system, and team connectors.</p>
+<p>This block diagram illustrates the electrical architecture and control connections of my subsystem for the automated garment-folding device. The subsystem is responsible for controlling a linear actuator that moves one of the folding panels during the folding sequence.</p>
+<p>The design incorporates a Microchip PIC18F57Q43 Curiosity Nano microcontroller, a Fairchild Semiconductor FAN8011N H-bridge motor driver, a SKYSHALO linear actuator, a pushbutton, a status LED, a power regulation system, and connectors for communication with other team subsystems.</p>
 <h2 id="block-diagram">Block Diagram</h2>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../individual-block-diagram.png.drawio.png" data-desc-position="bottom"><img alt="Ruben Esquer Individual Block Diagram" src="../individual-block-diagram.png.drawio.png"></a></p>
+<p><strong>Figure 1:</strong> Individual subsystem block diagram showing the microcontroller, actuator control, power distribution, user input, and subsystem connections.</p>
+<h2 id="design-decisions-and-system-architecture">Design Decisions and System Architecture</h2>
+<p>The subsystem was organized around the PIC18F57Q43 Curiosity Nano because it provides digital input and output capabilities for controlling the actuator and interfacing with other components.</p>
+<p>The FAN8011N H-bridge was selected to provide bidirectional motor control. The microcontroller sends digital control signals to the motor driver, which is intended to extend and retract the SKYSHALO linear actuator.</p>
+<p>The power system separates the 12 V supply required by the actuator from the regulated 5 V supply used by the low-voltage electronics. A voltage regulator provides the lower-voltage supply, while a shared ground provides a common electrical reference.</p>
+<p>A pushbutton provides a digital input, and a status LED provides visual feedback. Two subsystem connectors allow electrical connections with other parts of the team's garment-folding device.</p>
+<h2 id="microcontroller-connections">Microcontroller Connections</h2>
+<p>The block diagram identifies the following GPIO signals:</p>
+<table>
+<thead>
+<tr>
+<th>GPIO</th>
+<th>Function</th>
+<th>Signal Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RD1</td>
+<td>Status LED</td>
+<td>Digital Output</td>
+</tr>
+<tr>
+<td>RA7</td>
+<td>Pushbutton</td>
+<td>Digital Input</td>
+</tr>
+<tr>
+<td>RF0</td>
+<td>H-Bridge Extend Control</td>
+<td>Digital Output</td>
+</tr>
+<tr>
+<td>RF1</td>
+<td>H-Bridge Retract Control</td>
+<td>Digital Output</td>
+</tr>
+<tr>
+<td>RA1</td>
+<td>Subsystem Connector 1</td>
+<td>Digital I/O</td>
+</tr>
+<tr>
+<td>RA2</td>
+<td>Subsystem Connector 2</td>
+<td>Digital I/O</td>
+</tr>
+</tbody>
+</table>
+<p>The connections shown represent the planned subsystem interfaces and will be verified during hardware integration and testing.</p>
+<h2 id="relationship-to-product-requirements">Relationship to Product Requirements</h2>
+<p>The subsystem supports the automated garment-folding device by providing controlled movement of a folding panel. Bidirectional actuator operation allows the panel to move through the folding sequence and return toward its original position.</p>
+<p>The pushbutton provides a simple user interface, while the status LED allows the user to observe system activity. The connectors support integration with the other team members' subsystems.</p>
+<p>The separation of motor power and logic power supports the different electrical requirements of the actuator and microcontroller.</p>
+<h2 id="resources">Resources</h2>
+<p>The editable source file and exported diagram are maintained in the project repository.</p>
 
 
 
 
 
 
-
-  
-  
 
 
 
