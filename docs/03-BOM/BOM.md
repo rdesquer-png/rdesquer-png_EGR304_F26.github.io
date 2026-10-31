@@ -3,114 +3,96 @@
 title: Bill of Materials
 ---
 
+# Bill of Materials
+
 ## Overview
 
-This Bill of Materials (BOM) identifies the electrical, mechanical, and electromechanical components required for my subsystem of the automated garment-folding device.
+This Bill of Materials (BOM) documents the electrical, electromechanical, and mechanical components required for the automated garment-folding subsystem. It establishes the component inventory, design requirements, and estimated procurement costs for prototype development and system integration.
 
-The subsystem uses a Microchip PIC18F57Q43 Curiosity Nano microcontroller to control a SKYSHALO 12 V linear actuator through a FAN8011N H-bridge motor driver. The actuator moves a folding panel attached to the main platform through hinges.
+The subsystem incorporates a Microchip PIC18F57Q43 Curiosity Nano microcontroller, a 12V linear actuator, an H-bridge motor driver, voltage regulation, circuit protection, and electrical connectors. Additional mechanical components include 3D-printed supports and hinges for the folding mechanism.
 
-The design also incorporates 3D-printed structural components, voltage regulation, circuit protection, user input, status indication, and connectors for communication with other subsystems.
-
-The BOM reflects the current prototype design. Component prices and final purchasing information will be updated as parts are selected and acquired.
+The BOM was developed from the KiCad schematic and component selection process.
 
 ## Bill of Materials
 
-| Component | Qty | Manufacturer / Part Number | Unit Cost | Schematic Reference |
-|---|---:|---|---|---|
-| PIC18F57Q43 Curiosity Nano development board | 1 | Microchip / PIC18F57Q43 Curiosity Nano | TBD | U5 |
-| H-Bridge motor driver | 1 | Fairchild Semiconductor / FAN8011N | TBD | U4 |
-| 12 V linear actuator, 6-inch stroke | 1 | SKYSHALO / Model TBD | TBD | J8 (external actuator) |
-| 3D-printing filament (PLA or PETG) | 1 spool (1 kg) | Manufacturer TBD | TBD | Mechanical assembly |
-| Folding panel hinges | 2 (estimated) | Manufacturer TBD | TBD | Mechanical assembly |
-| 5 V linear voltage regulator | 1 | L7805 / Manufacturer TBD | TBD | U2 |
-| DC barrel jack | 1 | Manufacturer TBD | TBD | J6 |
-| Fuse | 1 | Rating and manufacturer TBD | TBD | F2 |
-| Momentary pushbutton | 1 | Manufacturer TBD | TBD | SW1 |
-| Status LED | 1 | Manufacturer TBD | TBD | D6 |
-| 330 ohm resistor | 1 | Manufacturer TBD | TBD | R12 |
-| 10 kohm resistor | 1 | Manufacturer TBD | TBD | R13 |
-| 0.1 uF capacitor | 2 | Manufacturer TBD | TBD | C1, C7 |
-| 0.33 uF capacitor | 1 | Manufacturer TBD | TBD | C6 |
-| 8-pin connector | 1 | Manufacturer TBD | TBD | J1 |
-| 4-pin connector | 1 | Manufacturer TBD | TBD | J7 |
-| 2-pin actuator connector | 1 | Manufacturer TBD | TBD | J8 |
+The following figure presents the completed Bill of Materials, including component descriptions, quantities, pricing, and purchasing information recorded in the Excel spreadsheet.
+
+![Bill of Materials](BOM-Screenshot.png){style="width:100%; max-width:1200px;"}
+
+*Figure 1: Bill of Materials for the automated garment-folding subsystem.*
 
 ## Component Selection and Design Decisions
 
 ### Microcontroller
 
-The Microchip PIC18F57Q43 Curiosity Nano serves as the central controller for the subsystem. It provides digital input and output connections for actuator control, pushbutton operation, status indication, and communication with other team subsystems.
+The Microchip PIC18F57Q43 Curiosity Nano serves as the subsystem controller. It provides digital input/output functionality for actuator control, user inputs, status indication, and communication with other team subsystems.
 
-The microcontroller was selected because it is compatible with the team's embedded development platform and provides the necessary interfaces for coordinating the folding sequence.
+The development board was selected for compatibility with MPLAB X IDE, MCC Melody, and the team's embedded development environment.
 
 ### Motor Driver and Linear Actuator
 
-The SKYSHALO 12 V linear actuator was selected to provide the linear motion needed to move the folding panel. The selected design uses a 6-inch stroke actuator to extend and retract the folding mechanism.
+The folding mechanism uses a SKYSHALO 12V linear actuator with a nominal 6-inch stroke. The actuator provides the mechanical force required to extend and retract the folding panel.
 
-The FAN8011N H-bridge is included in the schematic to provide bidirectional motor control. The microcontroller sends digital control signals to the H-bridge, which changes the polarity of the motor output to control the direction of actuator movement.
-
-The compatibility of the motor driver's current rating with the actuator's operating and stall current must be verified before hardware implementation.
+The FAN8011N H-bridge is identified in the schematic for bidirectional motor control. Its suitability for the actuator must be confirmed against operating current, stall current, and driver output ratings before hardware implementation.
 
 ### Mechanical Components
 
-The mechanical assembly incorporates 3D-printing filament and folding panel hinges.
+The subsystem incorporates 3D-printed structural components and folding-panel hinges.
 
-PLA or PETG filament will be used to manufacture custom actuator mounting brackets, supports, and other structural components. These parts can be designed to match the dimensions of the prototype and modified during testing.
+PLA or PETG filament supports fabrication of custom mounting brackets, actuator supports, and structural attachments. Hinges allow the folding panel to rotate relative to the stationary platform.
 
-Two hinges are currently estimated for the folding panel. The hinges will connect the moving panel to the stationary platform, allowing the panel to rotate as the linear actuator extends and retracts.
-
-These mechanical components were included because they support a compact, customizable, and affordable prototype.
+These components provide mechanical flexibility and allow modifications during prototype testing.
 
 ### Power Regulation and Protection
 
-The subsystem includes an L7805 voltage regulator to provide a regulated 5 V supply for appropriate low-voltage electronics.
+The subsystem uses a 12V DC supply for actuator operation and an L7805 regulator for the 5V control circuitry.
 
-The linear actuator requires a 12 V supply. The power distribution system must accommodate the different voltage and current requirements of the motor and control circuitry.
+Input protection is provided by a fuse. The final fuse rating must be coordinated with actuator current requirements, conductor ratings, and expected startup conditions.
 
-A fuse is included to provide protection against excessive current. Its final rating will be determined after the actuator's electrical requirements are verified.
+### User Input and Status Indication
 
-### User Input and Status Indicator
+A momentary pushbutton provides a digital control input, while an LED indicates subsystem status.
 
-A momentary pushbutton provides a digital input to the microcontroller, allowing the user to interact with the subsystem.
+The circuit incorporates current-limiting and pull-up resistors along with capacitors for regulation stability and input signal conditioning.
 
-A status LED provides visual feedback during operation. A 330 ohm resistor limits LED current, while the 10 kohm resistor and 0.1 uF capacitor support the pushbutton input circuit.
+### Connectors and System Integration
 
-### Connectors and Integration
+The subsystem includes 8-pin, 4-pin, and 2-pin electrical connectors for interfacing with external components and other team subsystems.
 
-The schematic includes an eight-pin connector, a four-pin connector, and a two-pin actuator connector.
+Connector selection considers pin count, physical compatibility, current capacity, and ease of assembly. Matching connector interfaces are required for reliable integration.
 
-These connectors provide interfaces for communication, power distribution, and electrical connections between the subsystem and the other components of the automated garment-folding device.
+## Cost Analysis
+
+The component prices and quantities documented in Figure 1 provide the basis for estimating subsystem procurement costs.
+
+The BOM includes electronic components, actuator hardware, connectors, and mechanical fabrication materials. Components already available through laboratory inventory may reduce the actual purchasing cost.
+
+Additional quantities should be considered for breadboard prototyping, PCB assembly, and replacement parts. The final purchase request will distinguish existing inventory from components requiring procurement.
 
 ## Relationship to Product Requirements
 
-The selected components support the automated garment-folding device by providing controlled folding-panel movement, simple user interaction, and integration with the team's other subsystems.
+The selected components support controlled folding-panel movement, subsystem integration, and prototype reliability.
 
-The linear actuator and hinges create the mechanical movement needed to fold garments. The microcontroller and motor driver coordinate the movement, while the 3D-printed components provide customizable mounting and structural support.
+The linear actuator and hinges provide the mechanical folding action, while the microcontroller and motor driver coordinate electrical control. The modular connectors support integration with other team subsystems.
 
-The design emphasizes affordability, ease of assembly, compact construction, and the ability to modify components during prototype development.
+The design prioritizes functional performance, affordability, maintainability, and ease of prototype modification.
 
-## Cost Summary
+## Conclusions
 
-The total subsystem cost will be calculated after final vendor selections and unit prices have been confirmed.
+The Bill of Materials establishes the component requirements for manufacturing, assembling, and testing the automated garment-folding subsystem.
 
-| Cost Category | Estimated Cost |
-|---|---|
-| Microcontroller and motor driver | TBD |
-| Linear actuator | TBD |
-| Mechanical components (filament and hinges) | TBD |
-| Power supply and regulation | TBD |
-| Electronic components and connectors | TBD |
-| **Total Estimated Subsystem Cost** | **TBD** |
+The completed spreadsheet provides a reference for component selection, purchasing decisions, and cost tracking. Final hardware verification will focus on actuator-driver compatibility, power protection, connector interfaces, and mechanical assembly requirements.
 
 ## Resources
 
-- [Microchip PIC18F57Q43 Product Information](https://www.microchip.com/en-us/product/PIC18F57Q43)
-- [FAN8011N Datasheet Search](https://www.google.com/search?q=FAN8011N+datasheet)
-- [L7805 Datasheet Search](https://www.google.com/search?q=L7805+datasheet)
-- [SKYSHALO Linear Actuator - Home Depot](https://www.homedepot.com/p/334440429)
+- [Microchip PIC18F57Q43 Curiosity Nano Evaluation Kit](https://www.microchip.com/en-us/development-tool/DM164150)
+- [PIC18F57Q43 Curiosity Nano Hardware User Guide](https://ww1.microchip.com/downloads/aemDocuments/documents/MCU08/ProductDocuments/UserGuides/PIC18F57Q43-Curiosity-Nano-HW-UserGuide-DS40002186B.pdf)
+- [STMicroelectronics L7805 Voltage Regulator](https://www.st.com/en/power-management/l78.html)
+- [SKYSHALO Linear Actuator Product Reference](https://www.homedepot.com/p/334440429)
+- [EGR 304 Component Sourcing Resources](https://embedded-systems-design.github.io/sources-for-electrical-and-electromechanical-components/)
 
 ## Notes
 
-This BOM represents the current subsystem design. Component quantities, exact manufacturer part numbers, purchasing links, and costs will be finalized during procurement and prototype assembly.
+This BOM represents the current prototype configuration. Component specifications, purchasing quantities, and costs are subject to updates following hardware testing and procurement review.
 
-Mechanical components such as the filament and hinges are included in the BOM but do not appear as electrical components in the KiCad schematic.
+Mechanical components such as filament and hinges are included in the BOM even though they are not represented as electrical symbols in the KiCad schematic.
